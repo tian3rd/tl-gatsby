@@ -17,6 +17,15 @@ export default function Header() {
           // every list map should have a key
           <MenuButton item={item} key={index} />
         ))}
+        <HamburgerWrapper>
+          <MenuButton
+            item={{
+              title: "",
+              icon: "/images/smallicons/hamburger.svg",
+              link: "",
+            }}
+          />
+        </HamburgerWrapper>
       </MenuWrapper>
       <MenuTooltip />
     </Wrapper>
@@ -37,6 +46,14 @@ const Wrapper = styled.div`
   padding: 0 30px;
   /* vertical center items */
   align-items: center;
+
+  @media (max-width: 768px) {
+    top: 30px;
+  }
+  @media (max-width: 450px) {
+    top: 20px;
+    padding: 0 20px;
+  }
 `
 
 const MenuWrapper = styled.div`
@@ -46,6 +63,15 @@ const MenuWrapper = styled.div`
   grid-template-columns: repeat(${menuData.length}, auto);
   /* also vertical center menu links */
   align-items: center;
+
+  @media (max-width: 768px) {
+    /* ">" selects all links 'a' tag of immediate children: the MenuButton has a, but not the Hamburger */
+    > a {
+      display: none;
+    }
+    /* for only one hamburger menu */
+    grid-template-columns: auto;
+  }
 `
 
 const Logo = styled.img`
@@ -59,4 +85,11 @@ const Logo = styled.img`
   filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.15));
   backdrop-filter: blur(40px);
   /* Note: backdrop-filter has minimal browser support */
+`
+
+const HamburgerWrapper = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
 `
