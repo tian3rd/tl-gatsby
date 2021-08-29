@@ -17,4 +17,10 @@ const Wrappper = styled.div`
   background: url("/images/animations/computer-herosection.svg");
   .mockup1 {
   }
+  & {
+    transition: 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  :hover {
+    filter: brightness(130%);
+  }
 `
