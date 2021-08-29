@@ -32,11 +32,13 @@ const HeroSection = () => {
 export default HeroSection
 
 const Wrapper = styled.div`
-  background: linear-gradient(158.45deg, #fdd2bf 20%, #012443 100%);
+  background: linear-gradient(115.82deg, #00237b 0%, #eb7776 93.65%);
 `
 
 const ContentWrapper = styled.div`
+  /* don't use width */
   max-width: 1234px;
+  /* normal center trick */
   margin: 0 auto;
   padding: 200px 30px;
 `

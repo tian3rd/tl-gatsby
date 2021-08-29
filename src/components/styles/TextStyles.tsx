@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-// look it up in the figma file
+// look it up in the figma file here: https://www.figma.com/file/ol7ZmeiJ24GHMqA7N7IebW/OptoFab?node-id=1%3A4
 export const H1 = styled.h1`
   font-weight: bold;
   font-size: 60px;

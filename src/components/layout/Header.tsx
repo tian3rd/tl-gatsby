@@ -5,7 +5,7 @@ import { menuData } from "../data/MenuData"
 export default function Header() {
   return (
     <Wrapper>
-      <img src="/images/logos/ANFFlogo.png" alt="logo" />
+      <Logo src="/images/logos/ANFFlogo.svg" alt="logo" />
       <MenuWrapper>
         {menuData.map((item, index) => (
           <a href={item.link} key={index}>
@@ -53,4 +53,17 @@ const MenuItem = styled.div`
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1),
       inset 0 0 0 0.5px rgba(255, 255, 255, 0.2);
   }
+`
+
+const Logo = styled.img`
+  width: 44px;
+  height: 61.84px;
+  left: 0px;
+  top: 0px;
+
+  /* drop shadow combo 1 */
+
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.15));
+  backdrop-filter: blur(40px);
+  /* Note: backdrop-filter has minimal browser support */
 `
