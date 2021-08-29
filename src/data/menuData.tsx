@@ -21,3 +21,11 @@ export const menuData = [
     link: "/feedback",
   },
 ]
+
+export const tooltipData = [
+  {
+    title: "Feedback",
+    icon: "/images/smallicons/team.svg",
+    link: "/feedback",
+  },
+]
