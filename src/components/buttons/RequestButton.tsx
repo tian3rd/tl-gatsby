@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { Caption2, SmallText } from "../styles/TextStyles"
@@ -5,16 +6,18 @@ import { Caption2, SmallText } from "../styles/TextStyles"
 export default function RequestButton(props) {
   const { title, subtitle } = props
   return (
-    <Wrapper>
-      <IconWrapper>
-        <Icon src="/images/smallicons/credit.svg" alt="button icon" />
-        <Ring src="/images/smallicons/icon-ring.svg" alt="ring icon" />
-      </IconWrapper>
-      <TextWrapper>
-        <Title>{title || "Request an order"}</Title>
-        <Subtitle>{subtitle || "make an inquiry"}</Subtitle>
-      </TextWrapper>
-    </Wrapper>
+    <Link to="/request">
+      <Wrapper>
+        <IconWrapper>
+          <Icon src="/images/smallicons/credit.svg" alt="button icon" />
+          <Ring src="/images/smallicons/icon-ring.svg" alt="ring icon" />
+        </IconWrapper>
+        <TextWrapper>
+          <Title>{title || "Request an order"}</Title>
+          <Subtitle>{subtitle || "make an inquiry"}</Subtitle>
+        </TextWrapper>
+      </Wrapper>
+    </Link>
   )
 }
 
@@ -65,6 +68,7 @@ const Title = styled(Caption2)`
 
 const Subtitle = styled(SmallText)`
   color: black;
+  /* opacity applies to all the layers, vs color rgba only applies to text color */
   opacity: 0.7;
 `
 
