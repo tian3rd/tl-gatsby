@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   /* set icon and text side by side: display -> grid;
   and set grid-template-columns */
   display: grid;
-  /* first column (icon) 53px; */
+  /* first column (icon) 53px = 77 - 2 * 12; */
   grid-template-columns: 53px auto;
   /* 1. align-content only aligns when child content is smaller than parent content*/
   /* align-content: center; */
@@ -45,14 +45,16 @@ const Wrapper = styled.div`
   /* apply transition to self and child elements */
   *,
   & {
-    /* transition, ease in and out */
+    /* transition, ease in and out/ cubic-bezier.com for more */
     transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition-delay: 0.1s;
   }
   :hover {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),
       0px 30px 60px rgba(23, 0, 102, 0.5),
-      inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5);
+      /* half pixel border: in figma use inner shadow effect to spread 0.5px; in Chrome, if stroke = 0.5px, it won't show */
+        inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5);
+    /* animation */
     transform: translateY(-3px) scale(1.05);
 
     /* corresponds to class name icon */
@@ -79,6 +81,7 @@ const Icon = styled.img`
 
 const Ring = styled.img`
   position: absolute;
+  /* why negative? if top: 0; left: 0; it will stick to the right-bottom corner? */
   top: -15px;
   left: -15.5px;
 `
@@ -93,8 +96,9 @@ const IconWrapper = styled.div`
   display: grid;
   justify-content: center;
   align-content: center;
-  /* 45px vs 53px of parent assigned width, to center it */
+  /* 45px vs 53px of parent assigned width, to center it (self is vs parent wrapper to justify) */
   justify-self: center;
+  /* set relative for Ring (absolute) to float */
   position: relative;
 
   ${Wrapper}:hover & {
