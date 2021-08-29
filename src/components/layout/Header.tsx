@@ -1,19 +1,20 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { menuData } from "../data/MenuData"
+import { menuData } from "../../data/MenuData"
+import MenuButton from "../buttons/MenuButton"
 
 export default function Header() {
   return (
     <Wrapper>
-      <Logo src="/images/logos/ANFFlogo.svg" alt="logo" />
+      {/* add home link to logo */}
+      <Link to="/">
+        <Logo src="/images/logos/ANFFlogo.svg" alt="logo" />
+      </Link>
       <MenuWrapper>
         {menuData.map((item, index) => (
-          <a href={item.link} key={index}>
-            <MenuItem>
-              <img src={item.icon} alt={item.title} />
-              {item.title}
-            </MenuItem>
-          </a>
+          // every list map should have a key
+          <MenuButton item={item} key={index} />
         ))}
       </MenuWrapper>
     </Wrapper>
@@ -21,38 +22,28 @@ export default function Header() {
 }
 
 const Wrapper = styled.div`
+  /* absolute to parent (root in this case) */
   position: absolute;
   top: 50px;
   display: grid;
+  /* first 45px is for logo */
   grid-template-columns: 45px auto;
+  /* set width to take up whole space */
   width: 100%;
+  /* space-between has no left/right (far-ends) space, vs space-around. see css-tricks.com */
   justify-content: space-between;
   padding: 0 30px;
+  /* vertical center items */
   align-items: center;
 `
 
 const MenuWrapper = styled.div`
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(5, auto);
+  /* use repeat function wrt menuData array length */
+  grid-template-columns: repeat(${menuData.length}, auto);
+  /* also vertical center menu links */
   align-items: center;
-`
-
-const MenuItem = styled.div`
-  color: rgba(255, 255, 255, 0.9);
-  display: grid;
-  grid-template-columns: 24px auto;
-  gap: 10px;
-  align-items: center;
-  padding: 10px;
-  transition: 0.5s ease-in-out;
-  border-radius: 10px;
-
-  :hover {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1),
-      inset 0 0 0 0.5px rgba(255, 255, 255, 0.2);
-  }
 `
 
 const Logo = styled.img`
