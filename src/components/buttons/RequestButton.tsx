@@ -9,7 +9,11 @@ export default function RequestButton(props) {
     <Link to="/request">
       <Wrapper>
         <IconWrapper>
-          <Icon src="/images/smallicons/credit.svg" alt="button icon" />
+          <Icon
+            src="/images/smallicons/credit.svg"
+            alt="button icon"
+            className="icon"
+          />
           <Ring src="/images/smallicons/icon-ring.svg" alt="ring icon" />
         </IconWrapper>
         <TextWrapper>
@@ -42,7 +46,7 @@ const Wrapper = styled.div`
   /* 20px gap between columns */
   gap: 20px;
 
-  /* apply transition to self and child elements */
+  /* apply transition to self (&) and child elements (*) */
   *,
   & {
     /* transition, ease in and out/ cubic-bezier.com for more */
@@ -83,7 +87,11 @@ const Ring = styled.img`
   position: absolute;
   /* why negative? if top: 0; left: 0; it will stick to the right-bottom corner? */
   top: -15px;
-  left: -15.5px;
+  left: -15.6px;
+
+  ${Wrapper}:hover & {
+    transform: rotate(10deg) scale(1.1);
+  }
 `
 
 const IconWrapper = styled.div`
@@ -101,7 +109,9 @@ const IconWrapper = styled.div`
   /* set relative for Ring (absolute) to float */
   position: relative;
 
+  /* in styled component, ${Wrapper} to select parent wrapper (must be declared beforehand) */
   ${Wrapper}:hover & {
+    /* filter effects, see:  https://developer.mozilla.org/en-US/docs/Web/CSS/filter */
     filter: hue-rotate(10deg) brightness(120%) saturate(80%);
   }
 `
