@@ -10,7 +10,7 @@ export default function Header() {
     <Wrapper>
       {/* add home link to logo */}
       <Link to="/">
-        <Logo src="/images/logos/ANFFlogo.svg" alt="logo" />
+        <Logo src="/images/logos/ANFFlogoFull.svg" alt="logo" />
       </Link>
       <MenuWrapper>
         {menuData.map((item, index) => (
